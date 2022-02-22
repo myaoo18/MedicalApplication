@@ -371,7 +371,7 @@ def validate_json (inputFile:str):
         data = json.load(f)
         f.close()
 
-        validateAllInfo:List = []
+        validateAllInfo = []
 
         # Validate parent items
         validate_parentItems = validate_parent_items(data.keys(), data)
