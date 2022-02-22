@@ -2,26 +2,5 @@
     "deviceId": 1234,
     "patientId": 4321,
     "patientName": "Jason mendes",
-    "gender": "Male",
-    "dob": "01/01/1992",
-    "address": {
-        "street": "440 Terry Ave N",
-        "city": "Seattle",
-        "state": "WA",
-        "zipcode": "98109"
-    },
-    "phoneNumber": "123-456-7890",
-    "date": "02/16/2022",
-    "medicalRecord": {
-        "vaccine": ["hepatitisA", "hepatitisB", "hpv"],
-        "smoke": "no",
-        "familyIllnessHistory": []
-    },
-    "observations": {
-        "temperature": "97F",
-        "bloodPressure": "120/80mmHg",
-        "pulse": "80bpm",
-        "condition": "cold",
-        "medicalRequest": "medicine",
-    }
+    "gender": "Male"
 }
