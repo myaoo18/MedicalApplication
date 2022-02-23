@@ -367,10 +367,12 @@ def validate_json (inputFile:str):
     logging.info("Processing: validating json format")
 
     try:
-        #f = open(inputFile)
-        data = json.loads(inputFile)
-        print (data)
-        #f.close()
+        if (inputFile[-5:] == ".json"):
+            f = open(inputFile)
+            data = json.load(f)
+            f.close()
+        else:
+            data = json.loads(inputFile)
 
         validateAllInfo = []
 
@@ -404,7 +406,6 @@ def validate_json (inputFile:str):
     except:
         message:str = "Fail: json file format is incorrect"
         logging.error(message)
-        print (message)
         return [False, message]
 
 # Store data to database 
@@ -420,13 +421,6 @@ def validate_file (inputFile:str):
         logging.error(message)
         return [False, message]
     logging.info("Success: file argument passed in is a string")
-
-    # # Validate argument parameter is json file
-    # if (len(inputFile) <= 5 or inputFile[-5:] != ".json"):
-    #     message:str = "Fail: file passed in is not a json file"
-    #     logging.error(message)
-    #     return [False, message]
-    # logging.info("Success: file passed in is a json file")
 
     validateJsonResult = validate_json(inputFile)
     logging.info(validateJsonResult)
@@ -453,9 +447,11 @@ def write_to_database (json_results):
 
 def main():
     if len(sys.argv) != 2:
-        print("You must insert one file as an argument. Please try again.")
+        message:str = "You must insert one file as an argument. Please try again."
+        logging.error(message)
         exit(1)
     results = validate_file(sys.argv[1])
+    print (results)
     write_to_database (results)
 
 if __name__ == '__main__':
