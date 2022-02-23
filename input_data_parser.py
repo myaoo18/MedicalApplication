@@ -58,7 +58,7 @@ def validate_patient_info (data):
 
     # Check dob parameter   
     try:
-        datetime.datetime.strptime(data["dob"], '%d/%m/%Y')
+        datetime.datetime.strptime(data["dob"], '%d-%m-%Y')
     except:
         message += "Fail: {} is not a valid dob. dob should be in MM/DD/YYYY format. ".format(data["dob"])
 
@@ -288,7 +288,7 @@ def validate_glucometer_info (glucometerMeasurements):
         message += "Fail: {} is not a valid blood sugar level. ".format(glucometerMeasurements["bloodSugarLvl"])
     
     # Check unit parameter
-    if glucometerMeasurements["unit"] != "mg/dL":
+    if glucometerMeasurements["unit"] != "mg-per-dL":
         message += "Fail: {} is not a valid blood sugar unit. Please use mg/dL.  ".format(glucometerMeasurements["unit"])
 
     # Return False along with all the messages when encountered with errors
@@ -367,9 +367,10 @@ def validate_json (inputFile:str):
     logging.info("Processing: validating json format")
 
     try:
-        f = open(inputFile)
-        data = json.load(f)
-        f.close()
+        #f = open(inputFile)
+        data = json.loads(inputFile)
+        print (data)
+        #f.close()
 
         validateAllInfo = []
 
@@ -396,7 +397,7 @@ def validate_json (inputFile:str):
             return [False, message]
 
         # Otherwise, return True and success message
-        message = "Success: all of patiet's information is validated"
+        message = "Success: all of patient's information is validated"
         logging.info(message)
         return [True, message, data]
 
@@ -420,12 +421,12 @@ def validate_file (inputFile:str):
         return [False, message]
     logging.info("Success: file argument passed in is a string")
 
-    # Validate argument parameter is json file
-    if (len(inputFile) <= 5 or inputFile[-5:] != ".json"):
-        message:str = "Fail: file passed in is not a json file"
-        logging.error(message)
-        return [False, message]
-    logging.info("Success: file passed in is a json file")
+    # # Validate argument parameter is json file
+    # if (len(inputFile) <= 5 or inputFile[-5:] != ".json"):
+    #     message:str = "Fail: file passed in is not a json file"
+    #     logging.error(message)
+    #     return [False, message]
+    # logging.info("Success: file passed in is a json file")
 
     validateJsonResult = validate_json(inputFile)
     logging.info(validateJsonResult)
@@ -443,9 +444,11 @@ def write_to_database (json_results):
                 json.dump(result, json_file, indent=4)
         message:str = "Successfully written to database"
         logging.info(message)
+        return [True, message]
     except:
         message:str = "Could not write result or data to database"
         logging.error(message)
+        return [False, message]
     
 
 def main():
