@@ -7,6 +7,10 @@ api = Api(application)
 
 parserResults = []
 
+class HomePage(Resource):
+    def get(self):
+        return "Landing page for Device Module API"
+
 class JsonParser(Resource):
     def get(self, json_string):
         global parserResults
@@ -35,6 +39,7 @@ class SendToDatabase(Resource):
             return {"success": parserResults[0],
                     "message": parserResults[1] + "Therefore, nothing is written to database. Please correct your json input first."}
 
+api.add_resource(HomePage, "/")
 api.add_resource(JsonParser, "/parser/<string:json_string>")
 api.add_resource(SendToDatabase, "/database/<string:json_string>")
 
