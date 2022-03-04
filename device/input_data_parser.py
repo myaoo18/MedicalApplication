@@ -8,9 +8,9 @@ import datetime
 # Location where data gets stored after validation
 database:str = "./data/database.json"
 # Emptying space for log file each time program is run
-with open ('../device/logs/input_data_parser.log', 'r+') as f:
+with open ('input_data_parser.log', 'r+') as f:
     f.truncate(0)
-logging.basicConfig(filename='../device/logs/input_data_parser.log', level=logging.DEBUG, format='%(asctime)s %(levelname)s %(name)s %(message)s')
+logging.basicConfig(filename='input_data_parser.log', level=logging.DEBUG, format='%(asctime)s %(levelname)s %(name)s %(message)s')
 logging.getLogger(__name__)
 
 def check_parameter_type (data, keys, validType):
