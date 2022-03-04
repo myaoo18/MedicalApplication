@@ -6,7 +6,7 @@ import re
 import datetime
 
 # Location where data gets stored after validation
-database:str = "./database.json"
+database:str = "./data/database.json"
 # Emptying space for log file each time program is run
 with open ('./logs/input_data_parser.log', 'r+') as f:
     f.truncate(0)
@@ -427,8 +427,18 @@ def validate_file (inputFile:str):
 
     return validateJsonResult
 
-def write_to_database (json_results):
+def write_to_database (json_file):
     try:
+        # Validate data
+        json_results = validate_file (json_file)
+        
+        # Check validate results, return false and error message when invalid
+        if (json_results[0] == False):
+            message:str = json_results[1] + "Therefore, no data is written to database. Please try again."
+            logging.error(message)
+            return [False, message]
+
+        # Otherwise, try writing to database
         with open(database, "w") as json_file:
             if (json_results[0] == True):
                 json.dump(json_results[2], json_file, indent=4)
@@ -450,9 +460,8 @@ def main():
         message:str = "You must insert one file as an argument. Please try again."
         logging.error(message)
         exit(1)
-    results = validate_file(sys.argv[1])
+    results = write_to_database (sys.argv[1])
     print (results)
-    write_to_database (results)
 
 if __name__ == '__main__':
     main()

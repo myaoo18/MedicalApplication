@@ -29,15 +29,26 @@ class JsonParser(Resource):
 
 class SendToDatabase(Resource):
     def post(self, json_string):
-        if not parserResults:
-            abort(404, message="No json string or file passed in. It must be parsed first before putting it into database. Please call get function within JsonParser first.")
-        if (parserResults[0] == True):
-            writeToDataBase = input_data_parser.write_to_database(parserResults)
-            return {"success": writeToDataBase[0],
-                    "message": writeToDataBase[1]}
-        else:
-            return {"success": parserResults[0],
-                    "message": parserResults[1] + "Therefore, nothing is written to database. Please correct your json input first."}
+        try:
+            databaseResults = input_data_parser.write_to_database(json_string)
+            if (databaseResults[0]):
+                return {"success": databaseResults[0],
+                        "message": databaseResults[1]}
+            else: 
+                return {"success": parserResults[0],
+                         "message": parserResults[1] + "Therefore, nothing is written to database. Please correct your json input first."}
+        except:
+            abort(404, message="Cannot write to database. Please check database json file exist.")
+
+        # if not parserResults:
+        #     abort(404, message="No json string or file passed in. It must be parsed first before putting it into database. Please call get function within JsonParser first.")
+        # if (parserResults[0] == True):
+        #     writeToDataBase = input_data_parser.write_to_database(parserResults)
+        #     return {"success": writeToDataBase[0],
+        #             "message": writeToDataBase[1]}
+        # else:
+        #     return {"success": parserResults[0],
+        #             "message": parserResults[1] + "Therefore, nothing is written to database. Please correct your json input first."}
 
 api.add_resource(HomePage, "/")
 api.add_resource(JsonParser, "/parser/<string:json_string>")
