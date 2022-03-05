@@ -456,7 +456,8 @@ def main():
         logging.error(message)
         exit(1)
     results = write_to_database (sys.argv[1])
-    print (results)
+    print ("results!!!: ")
+    print (results[0])
 
 if __name__ == '__main__':
     main()
