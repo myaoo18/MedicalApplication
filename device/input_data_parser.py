@@ -363,16 +363,24 @@ def validate_json (inputFile:str):
 
     try:
         if (inputFile[-5:] == ".json"):
+            logging.error("in if statement")
             f = open(inputFile)
+            logging.error("f")
             data = json.load(f)
+            logging.error(data)
             f.close()
         else:
+            logging.error("in else statement")
             data = json.loads(inputFile)
+            logging.error(data)
 
         validateAllInfo = []
 
         # Validate parent items
         validate_parentItems = validate_parent_items(data.keys(), data)
+        logging.error("validate_parentItems")
+        logging.error(validate_parentItems)
+
         validateAllInfo.append(validate_parentItems)
         logging.error("1")
         logging.error(validateAllInfo)
