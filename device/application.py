@@ -1,5 +1,5 @@
 import input_data_parser
-from flask import Flask, request, abort
+from flask import Flask, abort
 from flask_restful import Api, Resource
 
 application = Flask(__name__)
@@ -50,9 +50,11 @@ class SendToDatabase(Resource):
         #     return {"success": parserResults[0],
         #             "message": parserResults[1] + "Therefore, nothing is written to database. Please correct your json input first."}
 
+
 api.add_resource(HomePage, "/")
 api.add_resource(JsonParser, "/parser/<string:json_string>")
 api.add_resource(SendToDatabase, "/database/<string:json_string>")
+
 
 if __name__ == "__main__":
     application.run(debug=True)

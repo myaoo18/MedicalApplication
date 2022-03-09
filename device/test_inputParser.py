@@ -1,4 +1,3 @@
-import pytest
 import input_data_parser
 
 def test_validate_json_with_valide_file() -> None:

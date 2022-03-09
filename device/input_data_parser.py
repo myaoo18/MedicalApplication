@@ -9,6 +9,7 @@ import datetime
 # Location where data gets stored after validation
 database:str = "./data/database.json"
 
+
 def check_parameter_type (data, keys, validType):
     dict_valueType = []
     message:str = ""
@@ -24,6 +25,7 @@ def check_parameter_type (data, keys, validType):
             message += "Fail: {} should be {} but is {} instead. ".format(keys[index], validType[index], dict_valueType[index])
 
     return message
+
 
 # Validate patient info
 def validate_patient_info (data):
@@ -70,6 +72,7 @@ def validate_patient_info (data):
     message = "Success: patient info is validated"
     logging.info(message)
     return [True, message]
+
 
 # Validate all parent keys
 def validate_parent_items (dataKeys, data):
@@ -123,6 +126,7 @@ def validate_address_info (address):
     logging.info(message)
     return [True, message]
 
+
 def validate_address_items (addressKeys, address):
     dict_dataKeys = ["street", "city", "state", "zipcode"]
     
@@ -166,6 +170,7 @@ def validate_temperature_info (tempMeasurements):
     logging.info(message)
     return [True, message]
 
+
 # Validate blood pressure info
 def validate_BP_info (bpMeasurements):
     dict_validBPKeys = ["systolic", "diastolic", "unit"]
@@ -196,6 +201,7 @@ def validate_BP_info (bpMeasurements):
     logging.info(message)
     return [True, message]
 
+
 # Validate pulse info
 def validate_pulse_info (pulseMeasurements):
     dict_validPulseKeys = ["pulse", "unit"]
@@ -220,7 +226,8 @@ def validate_pulse_info (pulseMeasurements):
     message = "Success: patient pulse is validated"
     logging.info(message)
     return [True, message]
-    
+
+ 
 # Validate oximeter info
 def validate_oximeter_info (oximeterMeasurements):
     dict_validOximeterKeys = ["oxygen", "unit"]
@@ -245,6 +252,7 @@ def validate_oximeter_info (oximeterMeasurements):
     message = "Success: patient oximeter is validated"
     logging.info(message)
     return [True, message]
+
 
 # Validate weight info
 def validate_weight_info (weightMeasurements):
@@ -271,6 +279,7 @@ def validate_weight_info (weightMeasurements):
     logging.info(message)
     return [True, message]
 
+
 # Validate pulse info
 def validate_glucometer_info (glucometerMeasurements):
     dict_validGlucometerKeys = ["bloodSugarLvl", "unit"]
@@ -295,6 +304,7 @@ def validate_glucometer_info (glucometerMeasurements):
     message = "Success: patient glucometer is validated"
     logging.info(message)
     return [True, message]
+
 
 # Validate measurement keys
 def validate_measurement_items (measurementKeys, measurements):
@@ -356,6 +366,7 @@ def validate_measurement_items (measurementKeys, measurements):
     message = "Success: patient measurements are validated"
     logging.info(message)
     return [True, message]
+
 
 # Validate json file
 def validate_json (inputFile:str):
@@ -422,7 +433,6 @@ def validate_json (inputFile:str):
         logging.error(message)
         return [False, message]
 
-# Store data to database 
 
 # Validate input file is valide json file
 def validate_file (inputFile:str):
@@ -440,6 +450,7 @@ def validate_file (inputFile:str):
     logging.info(validateJsonResult)
 
     return validateJsonResult
+
 
 def write_to_database (json_file):
     try:
@@ -477,6 +488,7 @@ def main():
     results = write_to_database (sys.argv[1])
     print ("results!!!: ")
     print (results[0])
+
 
 if __name__ == '__main__':
     main()
