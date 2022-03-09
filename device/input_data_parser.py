@@ -377,7 +377,7 @@ def validate_json (inputFile:str):
     try:
         # Check to see if json file is passed in
         if (inputFile[-5:] == ".json"):
-            logging.error ("in if statement")
+    
             with open (inputFile, "r") as f:
                 if os.path.getsize(inputFile) == 0:
                     message = f"{inputFile} is empty"
@@ -385,34 +385,26 @@ def validate_json (inputFile:str):
                     return [False, message]
                 
                 data = json.load(f)
-                logging.error("success")
+                logging.info("Processing input that's a json file")
+               
         else:
-            logging.error("in else statement")
             data = json.loads(inputFile)
-            logging.error(data)
+            logging.info("Processing input that's not a json file")
 
         validateAllInfo = []
 
         # Validate parent items
         validate_parentItems = validate_parent_items(data.keys(), data)
-        logging.error("validate_parentItems")
-        logging.error(validate_parentItems)
-
         validateAllInfo.append(validate_parentItems)
-        logging.error("1")
-        logging.error(validateAllInfo)
 
         # Validate address items
         validate_addressItems = validate_address_items(data["address"].keys(), data["address"])
         validateAllInfo.append(validate_addressItems)
-        logging.error("2")
-        logging.error(validateAllInfo)
 
         # Validate measurement items
         validate_measurementItems = validate_measurement_items(data["measurements"].keys(), data["measurements"])
         validateAllInfo.append(validate_measurementItems)
-        logging.error("3")
-        logging.error(validateAllInfo)
+  
         # Sum up all error messages if there are any false
        
         for results in validateAllInfo:
@@ -485,9 +477,7 @@ def main():
         message:str = "You must insert one file as an argument. Please try again."
         logging.error(message)
         exit(1)
-    results = write_to_database (sys.argv[1])
-    print ("results!!!: ")
-    print (results[0])
+    write_to_database (sys.argv[1])
 
 
 if __name__ == '__main__':
