@@ -46,6 +46,6 @@ jobs:
       - name: Test with pytest
         run: |
          # change the working directory to where pytest is located
-           cd /Users/mandyyao/Documents/Grad/Grad 2 S/EC530/Project2/MedicalApplication/device
+           cd /Users/mandyyao/Documents/Grad/Grad\ 2\ S/EC530/Project2/MedicalApplication/device
          # indicate where pytest is located
-           pytest /Users/mandyyao/Documents/Grad/Grad 2 S/EC530/Project2/MedicalApplication/device/test_inputParser.py
+           pytest /Users/mandyyao/Documents/Grad/Grad\ 2\ S/EC530/Project2/MedicalApplication/device/test_inputParser.py
