@@ -2,6 +2,7 @@ import sys
 import json
 import logging
 import collections
+import os
 import re
 import datetime
 
@@ -359,18 +360,21 @@ def validate_measurement_items (measurementKeys, measurements):
 # Validate json file
 def validate_json (inputFile:str):
 
+    message:str = ""
     logging.info("Processing: validating json format")
 
     try:
+        # Check to see if json file is passed in
         if (inputFile[-5:] == ".json"):
-            logging.error("in if statement")
-            with open (inputFile, 'r') as f:
-
-            # f = open(inputFile)
-                logging.error("f")
+            logging.error ("in if statement")
+            with open (inputFile, "r") as f:
+                if os.path.getsize(inputFile) == 0:
+                    message = f"{inputFile} is empty"
+                    logging.error(message)
+                    return [False, message]
+                
                 data = json.load(f)
-            logging.error(data)
-               # f.close()
+                logging.error("success")
         else:
             logging.error("in else statement")
             data = json.loads(inputFile)
@@ -399,7 +403,7 @@ def validate_json (inputFile:str):
         logging.error("3")
         logging.error(validateAllInfo)
         # Sum up all error messages if there are any false
-        message:str = ""
+       
         for results in validateAllInfo:
             if (results[0] == False): 
                 message += results[1]
