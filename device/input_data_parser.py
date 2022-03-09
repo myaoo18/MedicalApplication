@@ -364,11 +364,13 @@ def validate_json (inputFile:str):
     try:
         if (inputFile[-5:] == ".json"):
             logging.error("in if statement")
-            f = open(inputFile)
-            logging.error("f")
-            data = json.load(f)
+            with open (inputFile, 'r') as f:
+
+            # f = open(inputFile)
+                logging.error("f")
+                data = json.load(f)
             logging.error(data)
-            f.close()
+               # f.close()
         else:
             logging.error("in else statement")
             data = json.loads(inputFile)
