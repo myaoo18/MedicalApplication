@@ -374,15 +374,20 @@ def validate_json (inputFile:str):
         # Validate parent items
         validate_parentItems = validate_parent_items(data.keys(), data)
         validateAllInfo.append(validate_parentItems)
+        logging.error("1")
+        logging.error(validateAllInfo)
 
         # Validate address items
         validate_addressItems = validate_address_items(data["address"].keys(), data["address"])
         validateAllInfo.append(validate_addressItems)
+        logging.error("2")
+        logging.error(validateAllInfo)
 
         # Validate measurement items
         validate_measurementItems = validate_measurement_items(data["measurements"].keys(), data["measurements"])
         validateAllInfo.append(validate_measurementItems)
-
+        logging.error("3")
+        logging.error(validateAllInfo)
         # Sum up all error messages if there are any false
         message:str = ""
         for results in validateAllInfo:
