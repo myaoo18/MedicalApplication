@@ -248,18 +248,18 @@ def insert_message (json_input):
 
         # Check validate results, return false and error message when invalid
         if (json_results[0] == False):
-            message:str = json_results[1] + "Therefore, no message data is written to mongoDB. Please try again."
+            message:str = json_results[1] + "Therefore, no message data is written to mongoDB. Please try again. "
             logging.error(message)
             return [False, message]
 
         # Otherwise, try writing to mongoDB
         collection.insert_one(json_results[2])
-        message:str = "Successfully written to mongoDB"
+        message:str = "Successfully written to mongoDB. "
         logging.info(message)
         return [True, message]
 
     except:
-        message:str = "Could not write result or data to mongoDB"
+        message:str = "Could not write result or data to mongoDB. "
         logging.error(message)
         return [False, message]
 

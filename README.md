@@ -27,5 +27,21 @@ The goal of the chat system module is to process communication requests and to f
 ### How to Use
 
 
+### Results
+To avoid aws from billing, the medical application api website is disabled. Below are proofs that it runs successfully when api_simulation.py is ran. This can also be tested locally by doing ```python3 api_simulation.py```:
+
+```
+{'success': True, 'message': "Success: all of patient's information is validated. ", 'data': {'deviceId': 1234, 'patientId': 4321, 'patientName': 'ja mendes', 'gender': 'Male', 'dob': '01-01-1992', 'phoneNumber': '123-456-7890', 'address': {'street': '440 Terry Ave N', 'city': 'Seattle', 'state': 'WA', 'zipcode': 98109}, 'measurements': {'temperature': {'temperature': 100, 'unit': 'F'}, 'bloodPressure': {'systolic': 120, 'diastolic': 80, 'unit': 'mmHg'}, 'pulse': {'pulse': 70, 'unit': 'bpm'}, 'oximeter': {'oxygen': 96, 'unit': '%'}, 'weight': {'weight': 120, 'unit': 'lb'}, 'glucometer': {'bloodSugarLvl': 139, 'unit': 'mg-per-dL'}, 'timestamp': '2022-02-20T09:35:20Z'}}}
+{'success': True, 'message': 'Successfully written to database. '}
+{'success': True, 'message': 'Success: message measurements are validated', 'data': {'accessToken': 123, 'messageInfo': {'messageId': 1234, 'sessionId': 4321, 'deviceType': 'ios', 'timestamp': '2022-02-20T09:35:20Z'}, 'sender': {'userId': 111, 'userName': 'mandyyao', 'name': 'Mandy Yao'}, 'recipient': {'userId': 222, 'userName': 'santiagogomez', 'name': 'Santiago Gomez'}, 'text': 'Hello World!', 'attachments': {'videoRecording': 'video.mov', 'voiceRecording': 'voice.mp3', 'picture': 'picture.jpg', 'fileUpload': 'file.pdf'}}}
+{'success': True, 'message': 'Successfully written to mongoDB. '}
+{'success': True, 'data': [{'accessToken': 123, 'messageInfo': {'messageId': 1234, 'sessionId': 4321, 'deviceType': 'ios', 'timestamp': '2022-02-20T09:35:20Z'}, 'sender': {'userId': 111, 'userName': 'mandyyao', 'name': 'Mandy Yao'}, 'recipient': {'userId': 222, 'userName': 'santiagogomez', 'name': 'Santiago Gomez'}, 'text': 'Hello World!', 'attachments': {'videoRecording': 'video.mov', 'voiceRecording': 'voice.mp3', 'picture': 'picture.jpg', 'fileUpload': 'file.pdf'}}]}
+{'success': True, 'data': [{'accessToken': 123, 'messageInfo': {'messageId': 1234, 'sessionId': 4321, 'deviceType': 'ios', 'timestamp': '2022-02-20T09:35:20Z'}, 'sender': {'userId': 111, 'userName': 'mandyyao', 'name': 'Mandy Yao'}, 'recipient': {'userId': 222, 'userName': 'santiagogomez', 'name': 'Santiago Gomez'}, 'text': 'Hello World!', 'attachments': {'videoRecording': 'video.mov', 'voiceRecording': 'voice.mp3', 'picture': 'picture.jpg', 'fileUpload': 'file.pdf'}}]}
+{'success': True, 'data': [{'accessToken': 123, 'messageInfo': {'messageId': 1234, 'sessionId': 4321, 'deviceType': 'ios', 'timestamp': '2022-02-20T09:35:20Z'}, 'sender': {'userId': 111, 'userName': 'mandyyao', 'name': 'Mandy Yao'}, 'recipient': {'userId': 222, 'userName': 'santiagogomez', 'name': 'Santiago Gomez'}, 'text': 'Hello World!', 'attachments': {'videoRecording': 'video.mov', 'voiceRecording': 'voice.mp3', 'picture': 'picture.jpg', 'fileUpload': 'file.pdf'}}]}
+{'success': True, 'data': [{'accessToken': 123, 'messageInfo': {'messageId': 1234, 'sessionId': 4321, 'deviceType': 'ios', 'timestamp': '2022-02-20T09:35:20Z'}, 'sender': {'userId': 111, 'userName': 'mandyyao', 'name': 'Mandy Yao'}, 'recipient': {'userId': 222, 'userName': 'santiagogomez', 'name': 'Santiago Gomez'}, 'text': 'Hello World!', 'attachments': {'videoRecording': 'video.mov', 'voiceRecording': 'voice.mp3', 'picture': 'picture.jpg', 'fileUpload': 'file.pdf'}}]}
+{'success': True, 'message': 'All message packages are deleted from mongoDB. '}
+{'packages': '0'} 
+```
+
 ## Release Notes 
 Version 1.0

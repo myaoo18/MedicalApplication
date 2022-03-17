@@ -70,8 +70,8 @@ class InsertMessageToMongoDB(Resource):
                 return {"success": mongoDBResult[0],
                         "message": mongoDBResult[1]}
             else:
-                return {"success": messageParserResults[0],
-                        "message": messageParserResults[1] + "Therefore, nothing is written to mongoDB. Please correct your json input first."}
+                return {"success": mongoDBResult[0],
+                        "message": mongoDBResult[1] + " Therefore, nothing is written to mongoDB. Please correct your json input first."}
         except:
             abort(404, message="Cannot write to mongoDB. Please check mongoDB cluster and collection exist.")
 
