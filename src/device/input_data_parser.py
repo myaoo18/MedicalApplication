@@ -7,8 +7,7 @@ import re
 import datetime
 
 # Location where data gets stored after validation
-database:str = "./data/database.json"
-
+database:str = "database.json"
 
 def check_parameter_type (data, keys, validType):
     dict_valueType = []
@@ -84,7 +83,7 @@ def validate_parent_items (dataKeys, data):
     if (collections.Counter(dict_dataKeys) != collections.Counter(dataKeys)):
         missing_keys = set(dict_dataKeys) - set(dataKeys)
         extra_keys = set(dataKeys) - set(dict_dataKeys)
-        message:str = "Fail: json file has missing primary key(s) {} and extra key(s) {}. It should only contain {}".format(missing_keys, extra_keys, dict_dataKeys)
+        message:str = "Fail: json file has missing primary key(s) {} and extra key(s) {}. It should only contain {}. ".format(missing_keys, extra_keys, dict_dataKeys)
         logging.error(message)
         return [False, message]
 
@@ -122,7 +121,7 @@ def validate_address_info (address):
         return [False, message]
 
     # Otherwise, return True and success message
-    message = "Success: patient address is validated"
+    message = "Success: patient address is validated. "
     logging.info(message)
     return [True, message]
 
@@ -136,7 +135,7 @@ def validate_address_items (addressKeys, address):
     if (collections.Counter(dict_dataKeys) != collections.Counter(addressKeys)):
         missing_keys = set(dict_dataKeys) - set(addressKeys)
         extra_keys = set(addressKeys) - set(dict_dataKeys)
-        message:str = "Fail: json file has missing address key(s) {} and extra key(s) {}. It should only contain {}".format(missing_keys, extra_keys, dict_dataKeys)
+        message:str = "Fail: json file has missing address key(s) {} and extra key(s) {}. It should only contain {}. ".format(missing_keys, extra_keys, dict_dataKeys)
         logging.error(message)
         return [False, message]
     
@@ -159,14 +158,14 @@ def validate_temperature_info (tempMeasurements):
     
     # Check unit parameter
     if tempMeasurements["unit"] != "F":
-        message += "Fail: {} is not a valid temperature unit. Please use F.  ".format(tempMeasurements["unit"])
+        message += "Fail: {} is not a valid temperature unit. Please use F. ".format(tempMeasurements["unit"])
 
     # Return False along with all the messages when encountered with errors
     if message != "":
         return [False, message]
 
     # Otherwise, return True and success message
-    message = "Success: patient temperature is validated"
+    message = "Success: patient temperature is validated. "
     logging.info(message)
     return [True, message]
 
@@ -190,14 +189,14 @@ def validate_BP_info (bpMeasurements):
     
     # Check unit parameter
     if bpMeasurements["unit"] != "mmHg":
-        message += "Fail: {} is not a valid blood pressure unit. Please use mmHg.  ".format(bpMeasurements["unit"])
+        message += "Fail: {} is not a valid blood pressure unit. Please use mmHg. ".format(bpMeasurements["unit"])
 
    # Return False along with all the messages when encountered with errors
     if message != "":
         return [False, message]
 
     # Otherwise, return True and success message
-    message = "Success: patient blood pressure is validated"
+    message = "Success: patient blood pressure is validated. "
     logging.info(message)
     return [True, message]
 
@@ -216,14 +215,14 @@ def validate_pulse_info (pulseMeasurements):
     
     # Check unit parameter
     if pulseMeasurements["unit"] != "bpm":
-        message += "Fail: {} is not a valid temperature unit. Please use bpm.  ".format(pulseMeasurements["unit"])
+        message += "Fail: {} is not a valid temperature unit. Please use bpm. ".format(pulseMeasurements["unit"])
 
     # Return False along with all the messages when encountered with errors
     if message != "":
         return [False, message]
 
     # Otherwise, return True and success message
-    message = "Success: patient pulse is validated"
+    message = "Success: patient pulse is validated. "
     logging.info(message)
     return [True, message]
 
@@ -242,14 +241,14 @@ def validate_oximeter_info (oximeterMeasurements):
     
     # Check unit parameter
     if oximeterMeasurements["unit"] != "%":
-        message += "Fail: {} is not a valid oxygen level unit. Please use %.  ".format(oximeterMeasurements["unit"])
+        message += "Fail: {} is not a valid oxygen level unit. Please use %. ".format(oximeterMeasurements["unit"])
 
     # Return False along with all the messages when encountered with errors
     if message != "":
         return [False, message]
 
     # Otherwise, return True and success message
-    message = "Success: patient oximeter is validated"
+    message = "Success: patient oximeter is validated. "
     logging.info(message)
     return [True, message]
 
@@ -268,14 +267,14 @@ def validate_weight_info (weightMeasurements):
     
     # Check unit parameter
     if weightMeasurements["unit"] != "lb":
-        message += "Fail: {} is not a valid weight unit. Please use lb.  ".format(weightMeasurements["unit"])
+        message += "Fail: {} is not a valid weight unit. Please use lb. ".format(weightMeasurements["unit"])
 
     # Return False along with all the messages when encountered with errors
     if message != "":
         return [False, message]
 
     # Otherwise, return True and success message
-    message = "Success: patient weight is validated"
+    message = "Success: patient weight is validated. "
     logging.info(message)
     return [True, message]
 
@@ -294,7 +293,7 @@ def validate_glucometer_info (glucometerMeasurements):
     
     # Check unit parameter
     if glucometerMeasurements["unit"] != "mg-per-dL":
-        message += "Fail: {} is not a valid blood sugar unit. Please use mg/dL.  ".format(glucometerMeasurements["unit"])
+        message += "Fail: {} is not a valid blood sugar unit. Please use mg/dL. ".format(glucometerMeasurements["unit"])
 
     # Return False along with all the messages when encountered with errors
     if message != "":
@@ -316,7 +315,7 @@ def validate_measurement_items (measurementKeys, measurements):
     if (collections.Counter(dict_dataKeys) != collections.Counter(measurementKeys)):
         missing_keys = set(dict_dataKeys) - set(measurementKeys)
         extra_keys = set(measurementKeys) - set(dict_dataKeys)
-        message:str = "Fail: json file has missing primary key(s) {} and extra key(s) {}. It should only contain {}".format(missing_keys, extra_keys, dict_dataKeys)
+        message:str = "Fail: json file has missing primary key(s) {} and extra key(s) {}. It should only contain {}. ".format(missing_keys, extra_keys, dict_dataKeys)
         logging.error(message)
         return [False, message]
     
@@ -363,7 +362,7 @@ def validate_measurement_items (measurementKeys, measurements):
         return [False, message]
 
     # Otherwise, return True and success message
-    message = "Success: patient measurements are validated"
+    message = "Success: patient measurements are validated. "
     logging.info(message)
     return [True, message]
 
@@ -415,12 +414,12 @@ def validate_json (inputFile:str):
             return [False, message]
 
         # Otherwise, return True and success message
-        message = "Success: all of patient's information is validated"
+        message = "Success: all of patient's information is validated. "
         logging.info(message)
         return [True, message, data]
 
     except:
-        message:str = "Fail: json file format is incorrect"
+        message:str = "Fail: json file format is incorrect. "
         logging.error(message)
         return [False, message]
 
@@ -432,7 +431,7 @@ def validate (inputFile:str):
 
     # Validate argument parameter is a string
     if (not isinstance(inputFile, str)):
-        message:str = "Fail: input argument is not a string"
+        message:str = "Fail: input argument is not a string. "
         logging.error(message)
         return [False, message]
     logging.info("Success: file argument passed in is a string")
@@ -450,7 +449,7 @@ def write_to_database (json_input):
         
         # Check validate results, return false and error message when invalid
         if (json_results[0] == False):
-            message:str = json_results[1] + "Therefore, no data is written to database. Please try again."
+            message:str = json_results[1] + "Therefore, no data is written to database. Please try again. "
             logging.error(message)
             return [False, message]
 
@@ -462,11 +461,11 @@ def write_to_database (json_input):
                 result = {}
                 result['results'] = json_results[1]
                 json.dump(result, json_input, indent=4)
-        message:str = "Successfully written to database"
+        message:str = "Successfully written to database. "
         logging.info(message)
         return [True, message]
     except:
-        message:str = "Could not write result or data to database"
+        message:str = "Could not write result or data to database. "
         logging.error(message)
         return [False, message]
     
@@ -476,7 +475,8 @@ def main():
         message:str = "You must insert one file as an argument. Please try again."
         logging.error(message)
         exit(1)
-    write_to_database (sys.argv[1])
+    result = write_to_database (sys.argv[1])
+    print (result)
 
 
 if __name__ == '__main__':

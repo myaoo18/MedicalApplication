@@ -40,7 +40,7 @@ class SendToDatabase(Resource):
                         "message": databaseResults[1]}
             else: 
                 return {"success": patientParserResults[0],
-                         "message": patientParserResults[1] + "Therefore, nothing is written to database. Please correct your json input first."}
+                         "message": patientParserResults[1] + " Therefore, nothing is written to database. Please correct your json input first."}
         except:
             abort(404, message="Cannot write to database. Please check database json file exist.")
 
