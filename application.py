@@ -1,6 +1,5 @@
 from flask import Flask, abort
 from flask_restful import Api, Resource
-import json
 import src
 
 application = Flask(__name__)

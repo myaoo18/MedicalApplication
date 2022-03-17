@@ -37,7 +37,6 @@ jobs:
          # E262	inline comment should start with ‘# ‘
          # E305	expected 2 blank lines after end of function or class
          # E4	  Import
-         # F401	module imported but unused
          # F404	future import(s) name after other statements
          # F541	f-string without any placeholders
           flake8 . --count --select=E9,E221,E222,E262,E305,E4,F401,F404,F541,EF63,F7,F82 --show-source --statistics
@@ -46,7 +45,7 @@ jobs:
       - name: Test with pytest
         run: |
          # change the working directory to where pytest is located
-           cd /home/runner/work/MedicalApplication/MedicalApplication/device
+           cd /home/runner/work/MedicalApplication/MedicalApplication/src
          # indicate where pytest is located
-           pytest /home/runner/work/MedicalApplication/MedicalApplication/device/test_inputParser.py
-           pytest /home/runner/work/MedicalApplication/MedicalApplication/chat/test_chat.py
+           pytest /home/runner/work/MedicalApplication/MedicalApplication/src/device/test_inputParser.py
+           pytest /home/runner/work/MedicalApplication/MedicalApplication/src/chat/test_chat.py

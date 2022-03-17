@@ -4,7 +4,6 @@ import os
 import json
 import datetime
 import collections
-import pymongo
 from pymongo import MongoClient
 
 # Credentials for mongoDB
