@@ -6,7 +6,7 @@ The goal of this project is to create a medical application to monitor patients 
 The goal of the datebase module is to provide an API that accepts data in json format, validates the input, and transfers it to database. 
 
 ### How to Use
-1) Create a python file for connecting to the API. (Sample: /device/test.py)
+1) Create a python file for connecting to the API. (Sample: /device/api_simulation.py)
 2) Import two libraries on the top
 ```import requests & import json```
 3) Create a variable for the calling of API: "http://medicalapplication-env.eba-if3c99xq.us-east-1.elasticbeanstalk.com/" 

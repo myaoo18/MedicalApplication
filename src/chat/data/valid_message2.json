@@ -1,0 +1,26 @@
+{
+    "accessToken": 123,
+    "messageInfo": {
+        "messageId": 4321,
+        "sessionId": 1234,
+        "deviceType": "android",
+        "timestamp": "2022-10-31T09:35:20Z"
+    },
+    "sender": {
+        "userId": 12342,
+        "userName": "billgates",
+        "name": "Bill Gates"
+    },
+    "recipient": {
+        "userId": 1,
+        "userName": "osama",
+        "name": "Osama Alshaykh"
+    }, 
+    "text": "I love coding!",
+    "attachments": {
+        "videoRecording": "",
+        "voiceRecording": "",
+        "picture": "",
+        "fileUpload": ""
+    }
+}

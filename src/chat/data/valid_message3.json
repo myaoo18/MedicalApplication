@@ -1,0 +1,26 @@
+{
+    "accessToken": 123,
+    "messageInfo": {
+        "messageId": 43231,
+        "sessionId": 12334,
+        "deviceType": "android",
+        "timestamp": "2022-11-01T09:35:20Z"
+    },
+    "sender": {
+        "userId": 142,
+        "userName": "presidentbrown",
+        "name": "President Brown"
+    },
+    "recipient": {
+        "userId": 2,
+        "userName": "osama",
+        "name": "Osama Alshaykh"
+    }, 
+    "text": "",
+    "attachments": {
+        "videoRecording": "video.mov",
+        "voiceRecording": "",
+        "picture": "",
+        "fileUpload": ""
+    }
+}

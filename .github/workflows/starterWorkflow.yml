@@ -49,3 +49,4 @@ jobs:
            cd /home/runner/work/MedicalApplication/MedicalApplication/device
          # indicate where pytest is located
            pytest /home/runner/work/MedicalApplication/MedicalApplication/device/test_inputParser.py
+           pytest /home/runner/work/MedicalApplication/MedicalApplication/chat/test_chat.py

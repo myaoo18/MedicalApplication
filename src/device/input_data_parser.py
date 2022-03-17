@@ -36,11 +36,11 @@ def validate_patient_info (data):
     message+= check_parameter_type(data, dict_validDataKeys, dict_validDataValueType)
 
     # Check deviceID parameter    
-    if type(data["deviceId"]).__name__ == 'int' and (data["deviceId"] < 0 or  data["deviceId"] > 999999):
+    if type(data["deviceId"]).__name__ == 'int' and (data["deviceId"] < 0 or data["deviceId"] > 999999):
         message += "Fail: deviceId value should be between 0 and 999999. "
 
     # Check patientId parameter   
-    if type(data["patientId"]).__name__ == 'int' and (data["patientId"] < 0 or  data["patientId"] > 999999):
+    if type(data["patientId"]).__name__ == 'int' and (data["patientId"] < 0 or data["patientId"] > 999999):
         message += "Fail: deviceId value should be between 0 and 999999. "
 
     # Check patientName parameter   
@@ -406,7 +406,6 @@ def validate_json (inputFile:str):
         validateAllInfo.append(validate_measurementItems)
   
         # Sum up all error messages if there are any false
-       
         for results in validateAllInfo:
             if (results[0] == False): 
                 message += results[1]
@@ -427,7 +426,7 @@ def validate_json (inputFile:str):
 
 
 # Validate input file is valide json file
-def validate_file (inputFile:str):
+def validate (inputFile:str):
 
     logging.info("Processing: began validating file")
 
@@ -444,10 +443,10 @@ def validate_file (inputFile:str):
     return validateJsonResult
 
 
-def write_to_database (json_file):
+def write_to_database (json_input):
     try:
         # Validate data
-        json_results = validate_file (json_file)
+        json_results = validate (json_input)
         
         # Check validate results, return false and error message when invalid
         if (json_results[0] == False):
@@ -456,13 +455,13 @@ def write_to_database (json_file):
             return [False, message]
 
         # Otherwise, try writing to database
-        with open(database, "w") as json_file:
+        with open(database, "w") as json_input:
             if (json_results[0] == True):
-                json.dump(json_results[2], json_file, indent=4)
+                json.dump(json_results[2], json_input, indent=4)
             else:
                 result = {}
                 result['results'] = json_results[1]
-                json.dump(result, json_file, indent=4)
+                json.dump(result, json_input, indent=4)
         message:str = "Successfully written to database"
         logging.info(message)
         return [True, message]

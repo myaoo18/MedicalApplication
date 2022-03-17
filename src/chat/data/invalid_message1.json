@@ -1,0 +1,19 @@
+{
+    "accessToken": 123,
+    "messageInfo": {
+        "messageId": 1234,
+        "sessionId": 4321,
+        "deviceType": "ios",
+        "timestamp": "2022-02-20T09:35:20Z"
+    },
+    "sender": {
+        "userId": 111,
+        "userName": "mandyyao",
+        "name": "Mandy Yao"
+    },
+    "recipient": {
+        "userId": 222,
+        "userName": "santiagogomez",
+        "name": "Santiago Gomez"
+    }
+}
