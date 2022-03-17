@@ -1,4 +1,4 @@
-import input_data_parser
+from . import input_data_parser
 import json
 
 # Validate happy path of a valid json file

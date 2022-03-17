@@ -1,4 +1,4 @@
-import chat
+from . import chat
 import json
 
 # Validate happy path of insert_message function with valid json file
