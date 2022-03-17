@@ -45,8 +45,15 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Test with pytest
         run: |
-         # change the working directory to where pytest is located
-           cd /home/runner/work/MedicalApplication/MedicalApplication/src
-         # indicate where pytest is located
+         # change the working directory to where device pytest is located
+           cd /home/runner/work/MedicalApplication/MedicalApplication/src/device
+
+         # indicate where device pytest is located
            pytest /home/runner/work/MedicalApplication/MedicalApplication/src/device/test_inputParser.py
+         
+         # change the working directory to where chat pytest is located
+           cd /home/runner/work/MedicalApplication/MedicalApplication/src/chat
+
+         # indicate where chat pytest is located
            pytest /home/runner/work/MedicalApplication/MedicalApplication/src/chat/test_chat.py
+      
