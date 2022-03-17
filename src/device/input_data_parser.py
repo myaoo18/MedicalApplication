@@ -184,7 +184,7 @@ def validate_BP_info (bpMeasurements):
     
 
     # Check diastolic parameter
-    if type(bpMeasurements["diastolic"]).__name__ == 'int' and bpMeasurements["diastolic"] > 300:
+    if type(bpMeasurements["diastolic"]).__name__ == 'int' and (bpMeasurements["diastolic"] < 0 or bpMeasurements["diastolic"] > 300):
         message += "Fail: {} is not a valid diastolic. ".format(bpMeasurements["diastolic"])
     
     # Check unit parameter
