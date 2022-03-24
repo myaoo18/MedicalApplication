@@ -57,3 +57,8 @@ jobs:
          # indicate where chat pytest is located
            pytest /home/runner/work/MedicalApplication/MedicalApplication/src/chat/test_chat.py
       
+         # change the working directory to where concurrency pytest is located
+           cd /home/runner/work/MedicalApplication/MedicalApplication/src/concurrency
+
+         # indicate where concurrency pytest is located
+           pytest /home/runner/work/MedicalApplication/MedicalApplication/src/concurrency/test_concurrency.py

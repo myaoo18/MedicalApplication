@@ -13,6 +13,9 @@ The goal of the chat system module is to validate message packages, store them i
 For details on chat module package structure: [Chat Package Structure](https://github.com/myaoo18/MedicalApplication/wiki/Device-Package-Structure)
 For details on chat API: [Chat API](https://github.com/myaoo18/MedicalApplication/wiki/Chat-API)
 
+## Concurrency Module
+The goal of the concurrency module is to enable a program to perform many tasks simultaneously or asynchronously.
+
 ## Branching Strategy
 For details on branching: [Branching Strategy](https://github.com/myaoo18/MedicalApplication/wiki/Branching-Strategy)
 
